@@ -21,7 +21,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{6A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Withdrawal", "Withdrawal", "{D966158B-E8D9-4ACB-9A64-1F1270883BF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceArchitecture.Security", "MicroserviceArchitecture.Security\MicroserviceArchitecture.Security.csproj", "{EC00B6D8-8393-4DE5-8427-AB3F68855D0F}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC00B6D8-8393-4DE5-8427-AB3F68855D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC00B6D8-8393-4DE5-8427-AB3F68855D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC00B6D8-8393-4DE5-8427-AB3F68855D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC00B6D8-8393-4DE5-8427-AB3F68855D0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
@@ -34,6 +46,7 @@ Global
 		{30E9D0E6-5B9C-4C7E-8AE9-E5EEF4EF6AC2} = {0E70D939-415D-42CE-97B2-AC19247F9BD6}
 		{6A46BF9B-C49B-462F-A61A-4353FB06C63E} = {0E70D939-415D-42CE-97B2-AC19247F9BD6}
 		{D966158B-E8D9-4ACB-9A64-1F1270883BF1} = {0E70D939-415D-42CE-97B2-AC19247F9BD6}
+		{EC00B6D8-8393-4DE5-8427-AB3F68855D0F} = {6A46BF9B-C49B-462F-A61A-4353FB06C63E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEC0E225-D1C1-4ED9-ADF2-CF28B6C5010A}
