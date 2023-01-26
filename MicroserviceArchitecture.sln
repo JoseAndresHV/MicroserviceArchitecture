@@ -20,12 +20,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{6A46BF9B-C49B-462F-A61A-4353FB06C63E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Withdrawal", "Withdrawal", "{D966158B-E8D9-4ACB-9A64-1F1270883BF1}"
+	ProjectSection(SolutionItems) = preProject
+		MicroserviceArchitecture.Deposit\README.md = MicroserviceArchitecture.Deposit\README.md
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceArchitecture.Security", "MicroserviceArchitecture.Security\MicroserviceArchitecture.Security.csproj", "{EC00B6D8-8393-4DE5-8427-AB3F68855D0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceArchitecture.Security", "MicroserviceArchitecture.Security\MicroserviceArchitecture.Security.csproj", "{EC00B6D8-8393-4DE5-8427-AB3F68855D0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceArchitecture.Account", "MicroserviceArchitecture.Account\MicroserviceArchitecture.Account.csproj", "{8A6CC415-812D-44A2-8E7E-5D06AB3EFCFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceArchitecture.Account", "MicroserviceArchitecture.Account\MicroserviceArchitecture.Account.csproj", "{8A6CC415-812D-44A2-8E7E-5D06AB3EFCFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceArchitecture.Deposit", "MicroserviceArchitecture.Deposit\MicroserviceArchitecture.Deposit.csproj", "{5A455958-6257-4A5E-AD9A-58820F45F439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceArchitecture.Deposit", "MicroserviceArchitecture.Deposit\MicroserviceArchitecture.Deposit.csproj", "{5A455958-6257-4A5E-AD9A-58820F45F439}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceArchitecture.Withdrawal", "MicroserviceArchitecture.Withdrawal\MicroserviceArchitecture.Withdrawal.csproj", "{2A993526-14B1-4F33-AC29-58D2DD09D155}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +50,10 @@ Global
 		{5A455958-6257-4A5E-AD9A-58820F45F439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A455958-6257-4A5E-AD9A-58820F45F439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A455958-6257-4A5E-AD9A-58820F45F439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A993526-14B1-4F33-AC29-58D2DD09D155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A993526-14B1-4F33-AC29-58D2DD09D155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A993526-14B1-4F33-AC29-58D2DD09D155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A993526-14B1-4F33-AC29-58D2DD09D155}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +70,7 @@ Global
 		{EC00B6D8-8393-4DE5-8427-AB3F68855D0F} = {6A46BF9B-C49B-462F-A61A-4353FB06C63E}
 		{8A6CC415-812D-44A2-8E7E-5D06AB3EFCFA} = {7BFDEAB0-95D2-440B-8D9E-8DF953B22FF1}
 		{5A455958-6257-4A5E-AD9A-58820F45F439} = {4D3AA493-8CD9-4AD9-99FD-10B379C3F5DA}
+		{2A993526-14B1-4F33-AC29-58D2DD09D155} = {D966158B-E8D9-4ACB-9A64-1F1270883BF1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEC0E225-D1C1-4ED9-ADF2-CF28B6C5010A}
