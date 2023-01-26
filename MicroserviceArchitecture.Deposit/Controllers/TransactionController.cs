@@ -40,6 +40,15 @@ namespace MicroserviceArchitecture.Deposit.Controllers
                 accountId: transaction.AccountId
             ));
 
+            _bus.SendCommand(new NotificationCreateCommand(
+                idTransaction: transaction.Id,
+                amount: transaction.Amount,
+                type: transaction.Type,
+                messageBody: $"Transaction alert: ${transaction.Amount} {transaction.Type} made to/from your account",
+                address: "alert@bank.com",
+                accountId: transaction.AccountId
+            ));
+
             return Ok(transaction);
         }
 
