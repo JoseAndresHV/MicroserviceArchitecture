@@ -1,4 +1,6 @@
-﻿using MicroserviceArchitecture.Withdrawal.DTOs;
+﻿using Aforo255.Cross.Event.Src.Bus;
+using MicroserviceArchitecture.Withdrawal.DTOs;
+using MicroserviceArchitecture.Withdrawal.Messages.Commands;
 using MicroserviceArchitecture.Withdrawal.Models;
 using MicroserviceArchitecture.Withdrawal.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +12,12 @@ namespace MicroserviceArchitecture.Withdrawal.Controllers
     public class TransactionController : ControllerBase
     {
         private readonly ITransactionService _transactionService;
+        private readonly IEventBus _bus;
 
-        public TransactionController(ITransactionService transactionService)
+        public TransactionController(ITransactionService transactionService, IEventBus bus)
         {
             _transactionService = transactionService;
+            _bus = bus;
         }
 
         [HttpPost("Withdrawal")]
@@ -27,6 +31,14 @@ namespace MicroserviceArchitecture.Withdrawal.Controllers
                 Type = "Withdrawal"
             };
             transaction = _transactionService.Withdrawal(transaction);
+
+            _bus.SendCommand(new TransactionCreateCommand(
+                idTransaction: transaction.Id,
+                amount: transaction.Amount,
+                type: transaction.Type,
+                creationDate: transaction.CreationDate,
+                accountId: transaction.AccountId
+            ));
 
             return Ok(transaction);
         }

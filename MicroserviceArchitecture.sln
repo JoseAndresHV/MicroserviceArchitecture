@@ -20,9 +20,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{6A46BF9B-C49B-462F-A61A-4353FB06C63E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Withdrawal", "Withdrawal", "{D966158B-E8D9-4ACB-9A64-1F1270883BF1}"
-	ProjectSection(SolutionItems) = preProject
-		MicroserviceArchitecture.Deposit\README.md = MicroserviceArchitecture.Deposit\README.md
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceArchitecture.Security", "MicroserviceArchitecture.Security\MicroserviceArchitecture.Security.csproj", "{EC00B6D8-8393-4DE5-8427-AB3F68855D0F}"
 EndProject
@@ -30,9 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceArchitecture.Ac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceArchitecture.Deposit", "MicroserviceArchitecture.Deposit\MicroserviceArchitecture.Deposit.csproj", "{5A455958-6257-4A5E-AD9A-58820F45F439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceArchitecture.Withdrawal", "MicroserviceArchitecture.Withdrawal\MicroserviceArchitecture.Withdrawal.csproj", "{2A993526-14B1-4F33-AC29-58D2DD09D155}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceArchitecture.Withdrawal", "MicroserviceArchitecture.Withdrawal\MicroserviceArchitecture.Withdrawal.csproj", "{2A993526-14B1-4F33-AC29-58D2DD09D155}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceArchitecture.History", "MicroserviceArchitecture.History\MicroserviceArchitecture.History.csproj", "{308DB9B5-0DBF-436D-B8DB-59873EDA3FCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceArchitecture.History", "MicroserviceArchitecture.History\MicroserviceArchitecture.History.csproj", "{308DB9B5-0DBF-436D-B8DB-59873EDA3FCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

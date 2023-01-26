@@ -1,6 +1,11 @@
+using Aforo255.Cross.Event.Src;
+using MediatR;
+using MicroserviceArchitecture.Withdrawal.Messages.CommandHandlers;
+using MicroserviceArchitecture.Withdrawal.Messages.Commands;
 using MicroserviceArchitecture.Withdrawal.Repositories;
 using MicroserviceArchitecture.Withdrawal.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +20,11 @@ builder.Services.AddDbContext<ContextDatabase>(
     });
 
 builder.Services.AddScoped<ITransactionService, TransactionService>();
+
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddRabbitMQ();
+
+builder.Services.AddTransient<IRequestHandler<TransactionCreateCommand, bool>, TransactionCommandHandler>();
 
 
 var app = builder.Build();

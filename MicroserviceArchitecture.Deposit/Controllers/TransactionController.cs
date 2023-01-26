@@ -1,4 +1,6 @@
-﻿using MicroserviceArchitecture.Deposit.DTOs;
+﻿using Aforo255.Cross.Event.Src.Bus;
+using MicroserviceArchitecture.Deposit.DTOs;
+using MicroserviceArchitecture.Deposit.Messages.Commands;
 using MicroserviceArchitecture.Deposit.Models;
 using MicroserviceArchitecture.Deposit.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +12,12 @@ namespace MicroserviceArchitecture.Deposit.Controllers
     public class TransactionController : ControllerBase
     {
         private readonly ITransactionService _transactionService;
+        private readonly IEventBus _bus;
 
-        public TransactionController(ITransactionService transactionService)
+        public TransactionController(ITransactionService transactionService, IEventBus bus)
         {
             _transactionService = transactionService;
+            _bus = bus;
         }
 
         [HttpPost("Deposit")]
@@ -27,6 +31,14 @@ namespace MicroserviceArchitecture.Deposit.Controllers
                 Type = "Deposit"
             };
             transaction = _transactionService.Deposit(transaction);
+
+            _bus.SendCommand(new TransactionCreateCommand(
+                idTransaction: transaction.Id,
+                amount: transaction.Amount,
+                type: transaction.Type,
+                creationDate: transaction.CreationDate,
+                accountId: transaction.AccountId
+            ));
 
             return Ok(transaction);
         }

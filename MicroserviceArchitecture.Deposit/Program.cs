@@ -1,6 +1,11 @@
+using Aforo255.Cross.Event.Src;
+using MediatR;
+using MicroserviceArchitecture.Deposit.Messages.CommandHandlers;
+using MicroserviceArchitecture.Deposit.Messages.Commands;
 using MicroserviceArchitecture.Deposit.Repositories;
 using MicroserviceArchitecture.Deposit.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +20,12 @@ builder.Services.AddDbContext<ContextDatabase>(
     });
 
 builder.Services.AddScoped<ITransactionService, TransactionService>();
+
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddRabbitMQ();
+
+builder.Services.AddTransient<IRequestHandler<TransactionCreateCommand, bool>, TransactionCommandHandler>();
+
 
 var app = builder.Build();
 
