@@ -6,7 +6,5 @@ namespace MicroserviceArchitecture.Deposit.Services
     {
         Transaction Deposit(Transaction transaction);
         Transaction DepositReverse(Transaction transaction);
-
-        List<Transaction> All();
     }
 }

@@ -26,11 +26,5 @@ namespace MicroserviceArchitecture.Deposit.Services
             _context.SaveChanges();
             return transaction;
         }
-
-        public List<Transaction> All()
-        {
-            var a = _context.Transaction.ToList();
-            return a;
-        }
     }
 }

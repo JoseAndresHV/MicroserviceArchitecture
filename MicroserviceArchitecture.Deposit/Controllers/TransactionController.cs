@@ -59,10 +59,5 @@ namespace MicroserviceArchitecture.Deposit.Controllers
 
             return Ok(transaction);
         }
-
-        public IActionResult get()
-        {
-            return Ok(_transactionService.All());
-        }
     }
 }
