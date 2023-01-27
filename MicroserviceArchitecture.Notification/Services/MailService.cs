@@ -13,8 +13,6 @@ namespace MicroserviceArchitecture.Notification.Services
         }
         public SendMail Add(SendMail sendMail)
         {
-
-            Console.WriteLine("============================================");
             _context.Add(sendMail);
             _context.SaveChanges();
 

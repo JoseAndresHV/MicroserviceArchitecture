@@ -32,8 +32,6 @@ builder.Services.AddRabbitMQ();
 builder.Services.AddTransient<NotificationEventHandler>();
 builder.Services.AddTransient<IEventHandler<NotificationCreatedEvent>, NotificationEventHandler>();
 
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
