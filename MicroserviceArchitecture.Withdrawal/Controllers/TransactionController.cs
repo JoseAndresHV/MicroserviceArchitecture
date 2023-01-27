@@ -12,11 +12,16 @@ namespace MicroserviceArchitecture.Withdrawal.Controllers
     public class TransactionController : ControllerBase
     {
         private readonly ITransactionService _transactionService;
+        private readonly IAccountService _accountService;
         private readonly IEventBus _bus;
 
-        public TransactionController(ITransactionService transactionService, IEventBus bus)
+        public TransactionController(
+            ITransactionService transactionService,
+            IAccountService accountService,
+            IEventBus bus)
         {
             _transactionService = transactionService;
+            _accountService = accountService;
             _bus = bus;
         }
 
@@ -32,23 +37,25 @@ namespace MicroserviceArchitecture.Withdrawal.Controllers
             };
             transaction = _transactionService.Withdrawal(transaction);
 
-            _bus.SendCommand(new TransactionCreateCommand(
-                idTransaction: transaction.Id,
-                amount: transaction.Amount,
-                type: transaction.Type,
-                creationDate: transaction.CreationDate,
-                accountId: transaction.AccountId
-            ));
+            if (_accountService.Execute(transaction))
+            {
+                _bus.SendCommand(new TransactionCreateCommand(
+                    idTransaction: transaction.Id,
+                    amount: transaction.Amount,
+                    type: transaction.Type,
+                    creationDate: transaction.CreationDate,
+                    accountId: transaction.AccountId
+                ));
 
-            _bus.SendCommand(new NotificationCreateCommand(
-                idTransaction: transaction.Id,
-                amount: transaction.Amount,
-                type: transaction.Type,
-                messageBody: $"Transaction alert: ${transaction.Amount} {transaction.Type} made to/from your account",
-                address: "alert@bank.com",
-                accountId: transaction.AccountId
-            ));
-
+                _bus.SendCommand(new NotificationCreateCommand(
+                    idTransaction: transaction.Id,
+                    amount: transaction.Amount,
+                    type: transaction.Type,
+                    messageBody: $"Transaction alert: ${transaction.Amount} {transaction.Type} made to/from your account",
+                    address: "alert@bank.com",
+                    accountId: transaction.AccountId
+                ));
+            }
             return Ok(transaction);
         }
     }
