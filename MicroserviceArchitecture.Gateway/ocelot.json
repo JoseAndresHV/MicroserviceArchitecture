@@ -1,24 +1,24 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/auth",
+      "DownstreamPathTemplate": "/security-service/api/auth",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5001
+          "Port": 9999
         }
       ],
       "UpstreamPathTemplate": "/api/token",
       "UpstreamHttpMethod": [ "Post" ]
     },
     {
-      "DownstreamPathTemplate": "/api/account",
+      "DownstreamPathTemplate": "/account-service/api/account",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5002
+          "Port": 9999
         }
       ],
       "UpstreamPathTemplate": "/api/account",
@@ -29,12 +29,12 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/api/transaction/deposit",
+      "DownstreamPathTemplate": "/deposit-service/api/transaction/deposit",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5003
+          "Port": 9999
         }
       ],
       "UpstreamPathTemplate": "/api/transaction/deposit",
@@ -45,12 +45,12 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/api/transaction/withdrawal",
+      "DownstreamPathTemplate": "/withdrawal-service/api/transaction/withdrawal",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5004
+          "Port": 9999
         }
       ],
       "UpstreamPathTemplate": "/api/transaction/withdrawal",
@@ -61,12 +61,12 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/api/history/{accountId}",
+      "DownstreamPathTemplate": "/history-service/api/history/{accountId}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5005
+          "Port": 9999
         }
       ],
       "UpstreamPathTemplate": "/api/history/{accountId}",
