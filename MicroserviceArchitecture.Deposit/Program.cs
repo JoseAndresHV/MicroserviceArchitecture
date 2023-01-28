@@ -1,4 +1,5 @@
 using Aforo255.Cross.Discovery.Consul;
+using Aforo255.Cross.Discovery.Fabio;
 using Aforo255.Cross.Discovery.Mvc;
 using Aforo255.Cross.Event.Src;
 using Aforo255.Cross.Http.Src;
@@ -37,6 +38,8 @@ builder.Services.AddProxyHttp();
 builder.Services.AddSingleton<IServiceId, ServiceId>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddConsul();
+
+builder.Services.AddFabio();
 
 var app = builder.Build();
 
