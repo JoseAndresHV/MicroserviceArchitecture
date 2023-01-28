@@ -1,5 +1,8 @@
+using Aforo255.Cross.Discovery.Consul;
+using Aforo255.Cross.Discovery.Mvc;
 using Aforo255.Cross.Event.Src;
 using Aforo255.Cross.Event.Src.Bus;
+using Consul;
 using MediatR;
 using MicroserviceArchitecture.History;
 using MicroserviceArchitecture.History.Messages.EventHandlers;
@@ -30,6 +33,10 @@ builder.Services.AddRabbitMQ();
 builder.Services.AddTransient<TransactionEventHandler>();
 builder.Services.AddTransient<IEventHandler<TransactionCreatedEvent>, TransactionEventHandler>();
 
+builder.Services.AddSingleton<IServiceId, ServiceId>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddConsul();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -40,8 +47,14 @@ app.MapControllers();
 
 ConfigureEventBus(app);
 
-app.Run();
+var serviceId = app.UseConsul();
+var consulClient = app.Services.GetRequiredService<IConsulClient>();
+app.Lifetime.ApplicationStopped.Register(() =>
+{
+    consulClient.Agent.ServiceDeregister(serviceId);
+});
 
+app.Run();
 
 void ConfigureEventBus(IApplicationBuilder app)
 {
