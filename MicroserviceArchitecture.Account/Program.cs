@@ -1,4 +1,5 @@
 using Aforo255.Cross.Discovery.Consul;
+using Aforo255.Cross.Discovery.Fabio;
 using Aforo255.Cross.Discovery.Mvc;
 using Consul;
 using MicroserviceArchitecture.Account.Repositories;
@@ -22,6 +23,8 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddSingleton<IServiceId, ServiceId>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddConsul();
+
+builder.Services.AddFabio();
 
 var app = builder.Build();
 
