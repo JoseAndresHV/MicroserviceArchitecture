@@ -6,9 +6,11 @@ using MicroserviceArchitecture.Notification.Messages.Events;
 using MicroserviceArchitecture.Notification.Repositories;
 using MicroserviceArchitecture.Notification.Services;
 using Microsoft.EntityFrameworkCore;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddConfigServer(builder.Environment.EnvironmentName);
 
 // Add services to the container.
 
@@ -17,7 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ContextDatabase>(
     opt =>
     {
-        opt.UseMySql(builder.Configuration["mariadb:cn"],
+        opt.UseMySql(builder.Configuration["cnmariadb"],
             new MariaDbServerVersion(new Version(10, 10, 2)))
         .EnableSensitiveDataLogging()
         .EnableDetailedErrors();
