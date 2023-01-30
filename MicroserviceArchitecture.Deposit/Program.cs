@@ -10,18 +10,23 @@ using MicroserviceArchitecture.Deposit.Messages.Commands;
 using MicroserviceArchitecture.Deposit.Repositories;
 using MicroserviceArchitecture.Deposit.Services;
 using Microsoft.EntityFrameworkCore;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddConfigServer(builder.Environment.EnvironmentName);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 
+Console.WriteLine(builder.Configuration["cnpostgres"]);
+
 builder.Services.AddDbContext<ContextDatabase>(
     opt =>
     {
-        opt.UseNpgsql(builder.Configuration["postgres:cn"]);
+        //opt.UseNpgsql(builder.Configuration["postgres:cn"]);
+        opt.UseNpgsql(builder.Configuration["cnpostgres"]);
     });
 
 builder.Services.AddScoped<ITransactionService, TransactionService>();
