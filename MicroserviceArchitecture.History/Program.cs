@@ -1,3 +1,4 @@
+using Aforo255.Cross.Cache.Src;
 using Aforo255.Cross.Discovery.Consul;
 using Aforo255.Cross.Discovery.Fabio;
 using Aforo255.Cross.Discovery.Mvc;
@@ -41,6 +42,8 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddConsul();
 
 builder.Services.AddFabio();
+
+builder.Services.AddRedis();
 
 var app = builder.Build();
 
