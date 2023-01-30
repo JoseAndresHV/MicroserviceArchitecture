@@ -5,8 +5,10 @@ using Consul;
 using MicroserviceArchitecture.Account.Repositories;
 using MicroserviceArchitecture.Account.Services;
 using Microsoft.EntityFrameworkCore;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddConfigServer(builder.Environment.EnvironmentName);
 
 // Add services to the container.
 
@@ -15,7 +17,8 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ContextDatabase>(
     opt =>
     {
-        opt.UseSqlServer(builder.Configuration["sqlserver:cn"]);
+        //opt.UseSqlServer(builder.Configuration["sqlserver:cn"]);
+        opt.UseSqlServer(builder.Configuration["cnsql"]);
     });
 
 builder.Services.AddScoped<IAccountService, AccountService>();

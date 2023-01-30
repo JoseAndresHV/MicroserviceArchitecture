@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Aforo255.Cross.Discovery" Version="1.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
+    <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerBase" Version="3.2.2" />
   </ItemGroup>
 
 </Project>
