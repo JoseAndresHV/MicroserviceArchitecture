@@ -10,9 +10,11 @@ using MicroserviceArchitecture.History.Messages.EventHandlers;
 using MicroserviceArchitecture.History.Messages.Events;
 using MicroserviceArchitecture.History.Repositories;
 using MicroserviceArchitecture.History.Services;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddConfigServer(builder.Environment.EnvironmentName);
 
 // Add services to the container.
 
@@ -20,7 +22,7 @@ builder.Services.AddControllers();
 
 builder.Services.Configure<MongoSettings>(opt =>
 {
-    opt.Connection = builder.Configuration.GetSection("mongo:cn").Value;
+    opt.Connection = builder.Configuration.GetSection("cnmongo").Value;
     opt.DatabaseName = builder.Configuration.GetSection("mongo:database").Value;
 });
 
