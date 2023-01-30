@@ -6,8 +6,10 @@ using Consul;
 using MicroserviceArchitecture.Security.Repositories;
 using MicroserviceArchitecture.Security.Services;
 using Microsoft.EntityFrameworkCore;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddConfigServer(builder.Environment.EnvironmentName);
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -15,7 +17,8 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ContextDatabase>(
     opt =>
     {
-        opt.UseMySQL(builder.Configuration["mysql:cn"]);
+        //opt.UseMySQL(builder.Configuration["mysql:cn"]);
+        opt.UseMySQL(builder.Configuration["cnmysql"]);
     });
 
 builder.Services.AddScoped<IAccessService, AccessService>();
