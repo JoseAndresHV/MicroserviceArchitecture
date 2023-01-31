@@ -3,6 +3,7 @@ using Aforo255.Cross.Discovery.Fabio;
 using Aforo255.Cross.Discovery.Mvc;
 using Aforo255.Cross.Event.Src;
 using Aforo255.Cross.Http.Src;
+using Aforo255.Cross.Tracing.Src;
 using Consul;
 using MediatR;
 using MicroserviceArchitecture.Deposit.Messages.CommandHandlers;
@@ -45,6 +46,9 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddConsul();
 
 builder.Services.AddFabio();
+
+builder.Services.AddJaeger();
+builder.Services.AddOpenTracing();
 
 var app = builder.Build();
 
