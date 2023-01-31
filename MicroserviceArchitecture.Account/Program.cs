@@ -1,6 +1,7 @@
 using Aforo255.Cross.Discovery.Consul;
 using Aforo255.Cross.Discovery.Fabio;
 using Aforo255.Cross.Discovery.Mvc;
+using Aforo255.Cross.Tracing.Src;
 using Consul;
 using MicroserviceArchitecture.Account.Repositories;
 using MicroserviceArchitecture.Account.Services;
@@ -28,6 +29,9 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddConsul();
 
 builder.Services.AddFabio();
+
+builder.Services.AddJaeger();
+builder.Services.AddOpenTracing();
 
 var app = builder.Build();
 
