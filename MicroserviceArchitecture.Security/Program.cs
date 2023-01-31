@@ -50,5 +50,10 @@ app.Lifetime.ApplicationStopped.Register(() =>
     consulClient.Agent.ServiceDeregister(serviceId);
 });
 
+var loggerFactory = app.Services.GetRequiredService<ILoggerFactory>();
+if (bool.Parse(builder.Configuration["seq:enabled"]) == true)
+{
+    loggerFactory.AddSeq(builder.Configuration["seq:url"], apiKey: builder.Configuration["seq:token"]);
+}
 app.Run();
 
