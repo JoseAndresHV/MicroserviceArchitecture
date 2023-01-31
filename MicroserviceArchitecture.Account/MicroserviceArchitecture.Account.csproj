@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Aforo255.Cross.Discovery" Version="1.0.0" />
+    <PackageReference Include="Aforo255.Cross.Metric" Version="6.0.0" />
     <PackageReference Include="Aforo255.Cross.Tracing" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.13" />
     <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.9.0" />

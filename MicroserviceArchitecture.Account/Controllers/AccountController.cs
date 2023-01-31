@@ -1,4 +1,5 @@
-﻿using MicroserviceArchitecture.Account.DTOs;
+﻿using Aforo255.Cross.Metric.Registry;
+using MicroserviceArchitecture.Account.DTOs;
 using MicroserviceArchitecture.Account.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,15 +10,20 @@ namespace MicroserviceArchitecture.Account.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
+        private readonly IMetricsRegistry _metrics;
 
-        public AccountController(IAccountService accountService)
+        public AccountController(IAccountService accountService,
+            IMetricsRegistry metrics)
         {
             _accountService = accountService;
+            _metrics = metrics;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
+            _metrics.IncrementFindQuery();
+
             return Ok(_accountService.GetAll());
         }
 
