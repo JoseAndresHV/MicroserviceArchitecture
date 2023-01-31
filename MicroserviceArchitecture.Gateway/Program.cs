@@ -1,4 +1,5 @@
 using Aforo255.Cross.Token.Src;
+using Aforo255.Cross.Tracing.Src;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -12,6 +13,9 @@ var services = builder.Services;
 
 services.AddJwtCustomized();
 services.AddOcelot();
+
+builder.Services.AddJaeger();
+builder.Services.AddOpenTracing();
 
 //builder.Services.AddControllers();
 

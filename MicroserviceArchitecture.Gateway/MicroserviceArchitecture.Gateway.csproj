@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Aforo255.Cross.Token" Version="6.0.0" />
+    <PackageReference Include="Aforo255.Cross.Tracing" Version="6.0.0" />
     <PackageReference Include="Ocelot" Version="18.0.0" />
   </ItemGroup>
 
