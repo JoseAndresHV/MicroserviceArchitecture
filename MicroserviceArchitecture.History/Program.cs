@@ -4,6 +4,7 @@ using Aforo255.Cross.Discovery.Fabio;
 using Aforo255.Cross.Discovery.Mvc;
 using Aforo255.Cross.Event.Src;
 using Aforo255.Cross.Event.Src.Bus;
+using Aforo255.Cross.Tracing.Src;
 using Consul;
 using MediatR;
 using MicroserviceArchitecture.History;
@@ -44,6 +45,9 @@ builder.Services.AddConsul();
 builder.Services.AddFabio();
 
 builder.Services.AddRedis();
+
+builder.Services.AddJaeger();
+builder.Services.AddOpenTracing();
 
 var app = builder.Build();
 
