@@ -1,5 +1,6 @@
 using Aforo255.Cross.Event.Src;
 using Aforo255.Cross.Event.Src.Bus;
+using Aforo255.Cross.Tracing.Src;
 using MediatR;
 using MicroserviceArchitecture.Notification.Messages.EventHandlers;
 using MicroserviceArchitecture.Notification.Messages.Events;
@@ -33,6 +34,9 @@ builder.Services.AddRabbitMQ();
 
 builder.Services.AddTransient<NotificationEventHandler>();
 builder.Services.AddTransient<IEventHandler<NotificationCreatedEvent>, NotificationEventHandler>();
+
+builder.Services.AddJaeger();
+builder.Services.AddOpenTracing();
 
 var app = builder.Build();
 
