@@ -1,0 +1,63 @@
+version: "3.5"
+
+services:
+  gateway:
+    image: joseandreshv/img-gateway
+    container_name: gateway-service
+    restart: always
+    ports:
+    - 9000:8080
+    networks:
+    - micro
+  security:
+    image: joseandreshv/img-security
+    container_name: security-service
+    restart: always
+    ports:
+    - 9001:8080
+    networks:
+    - micro
+  account:
+    image: joseandreshv/img-account
+    container_name: account-service
+    restart: always
+    ports:
+    - 9002:8080
+    networks:
+    - micro
+  deposit:
+    image: joseandreshv/img-deposit
+    container_name: deposit-service
+    restart: always
+    ports:
+    - 9003:8080
+    networks:
+    - micro
+  withdrawal:
+    image: joseandreshv/img-withdrawal
+    container_name: withdrawal-service
+    restart: always
+    ports:
+    - 9004:8080
+    networks:
+    - micro
+  history:
+    image: joseandreshv/img-history
+    container_name: history-service
+    restart: always
+    ports:
+    - 9005:8080
+    networks:
+    - micro
+  notification:
+    image: joseandreshv/img-notification
+    container_name: notification-service
+    restart: always
+    ports:
+    - 9006:8080
+    networks:
+    - micro
+
+networks:
+  micro:
+    name: micro

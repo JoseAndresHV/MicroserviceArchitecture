@@ -1,0 +1,69 @@
+﻿version: "3.5"
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql-database
+    restart: always
+    environment:
+    - MYSQL_ROOT_PASSWORD=Passw0rd
+    ports:
+    - 3307:3306
+    - 33061:33060
+    networks:
+    - micro
+  sql:
+    image: mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
+    container_name: sql-database
+    restart: always
+    ports:
+    - 1434:1433
+    environment:
+    - ACCEPT_EULA=Y
+    - SA_PASSWORD=Passw0rd
+    networks:
+    - micro
+  postgres:
+    image: postgres
+    container_name: postgres-database
+    environment:
+    - POSTGRES_PASSWORD=Passw0rd
+    ports:
+    - 5434:5432
+    networks:
+    - micro
+  mongo:
+    image: mongo
+    container_name: mongo-database
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=joseandreshv
+    - MONGO_INITDB_ROOT_PASSWORD=Passw0rd
+    ports:
+    - 27018:27017
+    networks:
+    - micro
+  mariadb:
+    image: mariadb
+    container_name: maria-database
+    restart: always
+    environment:
+    - MYSQL_ROOT_PASSWORD=Passw0rd
+    ports:
+    - 3310:3306
+    - 33070:33060
+    networks:
+    - micro
+  redis:
+    image: redis
+    command: --requirepass Passw0rd
+    container_name: redis-database
+    environment:
+    - REDIS_PASSWORD=Passw0rd
+    ports:
+    - 6379:6379
+    networks:
+    - micro
+
+networks:
+  micro:
+    name: micro
